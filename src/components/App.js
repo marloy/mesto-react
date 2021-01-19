@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 
 function App() {
   return (
@@ -47,13 +48,7 @@ function App() {
           </label>
         </PopupWithForm>
         <PopupWithForm name="delete-card" title="Вы уверены?" buttonTitle="Да" />
-        <div className="popup popup_type_photo">
-          <div className="popup__photo-container">
-            <img src="#" alt="" className="popup__photo" />
-            <button type="button" className="popup__close-button" name="photo-close-button"></button>
-            <h2 className="popup__title-photo"></h2>
-          </div>
-        </div>
+        <ImagePopup />
         <template className="cards-template">
           <li className="cards__item">
             <img src="#" alt="" className="cards__photo" />
