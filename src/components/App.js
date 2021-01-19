@@ -2,92 +2,73 @@ import logo from '../images/header-logo.svg';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
 
 function App() {
   return (
-    <body className="root">
-      <div className="page">
+    <div className="page">
+      <div className="page__content">
         <Header alt="Логотип Mesto" src={logo} />
         <Main />
         <Footer />
-      </div>
-      <div className="popup popup_type_edit-profile">
-        <div className="popup__container">
-          <button type="button" className="popup__close-button" name="edit-profile-close-btn"></button>
-          <h2 className="popup__title">Редактировать профиль</h2>
-          <form className="popup__form" method="POST" name="edit-profile-form" novalidate>
-            <label className="popup__label">
-              <input id="name-input" className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" minlength="2" maxlength="40" required />
-              <span id="name-input-error" className="popup__input-error"></span>
-            </label>
-            <label className="popup__label">
-              <input id="job-input" className="popup__input popup__input_el_job" type="text" name="about" placeholder="О себе" minlength="2" maxlength="200" required />
-              <span id="job-input-error" className="popup__input-error"></span>
-            </label>
-            <button type="submit" className="popup__save-button" name="save-button">Сохранить</button>
-          </form>
-        </div>
-      </div>
-      <div className="popup popup_type_add-card">
-        <div className="popup__container">
-          <button type="button" className="popup__close-button" name="add-card-close-button"></button>
-          <h2 className="popup__title">Новое место</h2>
-          <form className="popup__form" method="POST" name="add-card-form" novalidate>
-            <label className="popup__label">
-              <input id="place-input" className="popup__input popup__input_el_place" type="text" name="name" placeholder="Название" minlength="2" maxlength="30" required />
-              <span id="place-input-error" className="popup__input-error"></span>
-            </label>
-            <label className="popup__label">
-              <input id="link-input" className="popup__input popup__input_el_link" type="url" name="link" placeholder="Ссылка на картинку" required />
-              <span id="link-input-error" className="popup__input-error"></span>
-            </label>
-            <button type="submit" className="popup__save-button" name="create-button">Создать</button>
-          </form>
-        </div>
-      </div>
-      <div className="popup popup_type_photo">
-        <div className="popup__photo-container">
-          <img src="#" alt="" className="popup__photo" />
-          <button type="button" className="popup__close-button" name="photo-close-button"></button>
-          <h2 className="popup__title-photo"></h2>
-        </div>
-      </div>
-      <div className="popup popup_type_delete-card">
-        <div className="popup__container">
-          <button type="button" className="popup__close-button" name="delete-card-close-button"></button>
-          <h2 className="popup__title">Вы уверены?</h2>
-          <form className="popup__form" method="POST" name="delete-card-form" novalidate>
-            <button type="submit" className="popup__save-button" name="confirm-button">Да</button>
-          </form>
-        </div>
-      </div>
-      <div className="popup popup_type_update-avatar">
-        <div className="popup__container">
-          <button type="button" className="popup__close-button" name="update-avatar-close-button"></button>
-          <h2 className="popup__title">Обновить аватар</h2>
-          <form className="popup__form" method="POST" name="add-card-form" novalidate>
-            <label className="popup__label">
-              <input id="link-input" className="popup__input popup__input_el_link" type="url" name="avatar" placeholder="Ссылка на картинку" required />
-              <span id="link-input-error" className="popup__input-error"></span>
-            </label>
-            <button type="submit" className="popup__save-button" name="save-button">Сохранить</button>
-          </form>
-        </div>
-      </div>
-      <template className="cards-template">
-        <li className="cards__item">
-          <img src="#" alt="" className="cards__photo" />
-          <button type="button" className="cards__delete-button cards__delete-button_hidden" name="delete-button"></button>
-          <div className="cards__description">
-            <p className="cards__location"></p>
-            <div className="cards__like-container">
-              <button type="button" className="cards__like" name="like-button"></button>
-              <span className="cards__like-counter"></span>
-            </div>
+        <PopupWithForm name="edit-profile" title="Редактировать профиль" buttonTitle="Сохранить">
+          <label className="popup__label">
+            <input id="name-input" className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" minLength="2" maxLength="40" required />
+            <span id="name-input-error" className="popup__input-error"></span>
+          </label>
+          <label className="popup__label">
+            <input id="job-input" className="popup__input popup__input_el_job" type="text" name="about" placeholder="О себе" minLength="2" maxLength="200" required />
+            <span id="job-input-error" className="popup__input-error"></span>
+          </label>
+        </PopupWithForm>
+        <PopupWithForm name="add-card" title="Новое место" buttonTitle="Создать">
+          <label className="popup__label">
+            <input
+              id="place-input"
+              className="popup__input popup__input_el_place"
+              type="text"
+              name="name"
+              placeholder="Название"
+              minLength="2"
+              maxLength="30"
+              required
+            />
+            <span id="place-input-error" className="popup__input-error"></span>
+          </label>
+          <label className="popup__label">
+            <input id="link-input" className="popup__input popup__input_el_link" type="url" name="link" placeholder="Ссылка на картинку" required />
+            <span id="link-input-error" className="popup__input-error"></span>
+          </label>
+        </PopupWithForm>
+        <PopupWithForm name="update-avatar" title="Обновить аватар" buttonTitle="Сохранить">
+          <label className="popup__label">
+            <input id="link-input" className="popup__input popup__input_el_link" type="url" name="avatar" placeholder="Ссылка на картинку" required />
+            <span id="link-input-error" className="popup__input-error"></span>
+          </label>
+        </PopupWithForm>
+        <PopupWithForm name="delete-card" title="Вы уверены?" buttonTitle="Да" />
+        <div className="popup popup_type_photo">
+          <div className="popup__photo-container">
+            <img src="#" alt="" className="popup__photo" />
+            <button type="button" className="popup__close-button" name="photo-close-button"></button>
+            <h2 className="popup__title-photo"></h2>
           </div>
-        </li>
-      </template>
-    </body>
+        </div>
+        <template className="cards-template">
+          <li className="cards__item">
+            <img src="#" alt="" className="cards__photo" />
+            <button type="button" className="cards__delete-button cards__delete-button_hidden" name="delete-button"></button>
+            <div className="cards__description">
+              <p className="cards__location"></p>
+              <div className="cards__like-container">
+                <button type="button" className="cards__like" name="like-button"></button>
+                <span className="cards__like-counter"></span>
+              </div>
+            </div>
+          </li>
+        </template>
+      </div>
+    </div>
   );
 }
 
