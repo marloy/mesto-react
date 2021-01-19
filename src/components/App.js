@@ -23,6 +23,12 @@ function App() {
     setIsAddPlacePopupOpen(true)
   }
 
+  function closeAllPopups() {
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+  }
+
   return (
     <div className="page">
       <div className="page__content">
@@ -38,6 +44,7 @@ function App() {
           title="Редактировать профиль"
           buttonTitle="Сохранить"
           isOpen={ isEditProfilePopupOpen }
+          onClose={ closeAllPopups }
         >
           <label className="popup__label">
             <input id="name-input" className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" minLength="2" maxLength="40" required />
@@ -53,6 +60,7 @@ function App() {
           title="Новое место"
           buttonTitle="Создать"
           isOpen={ isAddPlacePopupOpen }
+          onClose={ closeAllPopups }
         >
           <label className="popup__label">
             <input
@@ -77,6 +85,7 @@ function App() {
           title="Обновить аватар"
           buttonTitle="Сохранить"
           isOpen={ isEditAvatarPopupOpen }
+          onClose={ closeAllPopups }
         >
           <label className="popup__label">
             <input id="link-input" className="popup__input popup__input_el_link" type="url" name="avatar" placeholder="Ссылка на картинку" required />
