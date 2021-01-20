@@ -136,7 +136,10 @@ function App() {
           title="Вы уверены?"
           buttonTitle="Да"
         />
-        <ImagePopup card={selectedCard.isSelected && selectedCard.card} onClose={ closeAllPopups }/>
+        <ImagePopup 
+          card={selectedCard.isSelected && selectedCard.card}
+          onClose={ closeAllPopups }
+        />
       </div>
     </div>
   );
