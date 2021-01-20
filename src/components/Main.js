@@ -9,14 +9,13 @@ function Main(props) {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getUserInfo().then(res => {
-      setUserName(res.name);
-      setUserDescription(res.about);
-      setUserAvatar(res.avatar);
-    });
-    api.getInitialCards().then(res => {
-      setCards(res);
-    });
+    api.getAllNeededData().then((args) => {
+      const [userInfo, initialCards] = args;
+      setUserName(userInfo.name);
+      setUserDescription(userInfo.about);
+      setUserAvatar(userInfo.avatar);
+      setCards(initialCards);
+    }).catch((err) => console.log(err));
   }, []);
 
   return (
