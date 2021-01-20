@@ -5,12 +5,12 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import Card from './Card';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({card: {}, isSelected: false});
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -28,6 +28,11 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
+    setSelectedCard({card: {}, isSelected: false});
+  }
+
+  function handleCardClick(data) {
+    setSelectedCard(data);
   }
 
   return (
@@ -38,6 +43,7 @@ function App() {
           onEditProfile={ handleEditProfileClick }
           onAddPlace={ handleAddPlaceClick }
           onEditAvatar={ handleEditAvatarClick }
+          onCardClick={ handleCardClick }
         />
         <Footer />
         <PopupWithForm
@@ -130,7 +136,7 @@ function App() {
           title="Вы уверены?"
           buttonTitle="Да"
         />
-        <ImagePopup />
+        <ImagePopup card={selectedCard.isSelected && selectedCard.card} onClose={ closeAllPopups }/>
       </div>
     </div>
   );

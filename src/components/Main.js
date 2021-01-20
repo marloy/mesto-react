@@ -42,7 +42,7 @@ function Main(props) {
         <ul className="cards__grid">
           {cards.map((data) => (
             <li key={data._id} className="cards__item">
-              <Card card={data} />
+              <Card card={data} onCardClick={ props.onCardClick }/>
             </li>
           ))}
         </ul>
