@@ -14,9 +14,6 @@ function Main(props) {
       setUserDescription(res.about);
       setUserAvatar(res.avatar);
     });
-  }, []);
-
-  React.useEffect(() => {
     api.getInitialCards().then(res => {
       setCards(res);
     });
