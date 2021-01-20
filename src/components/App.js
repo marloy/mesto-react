@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import Card from './Card';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -16,11 +17,11 @@ function App() {
   }
 
   function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(true)
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(true)
+    setIsAddPlacePopupOpen(true);
   }
 
   function closeAllPopups() {
@@ -130,19 +131,6 @@ function App() {
           buttonTitle="Да"
         />
         <ImagePopup />
-        <template className="cards-template">
-          <li className="cards__item">
-            <img src="#" alt="" className="cards__photo" />
-            <button type="button" className="cards__delete-button cards__delete-button_hidden" name="delete-button"></button>
-            <div className="cards__description">
-              <p className="cards__location"></p>
-              <div className="cards__like-container">
-                <button type="button" className="cards__like" name="like-button"></button>
-                <span className="cards__like-counter"></span>
-              </div>
-            </div>
-          </li>
-        </template>
       </div>
     </div>
   );
