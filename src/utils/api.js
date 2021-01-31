@@ -37,7 +37,7 @@ class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  saveUserInfo(data) {
+  setUserInfo({name, about}) {
     return fetch(`${this._baseURL}/v1/${this._cohortID}/users/me`, {
       method: "PATCH",
       headers: {
@@ -45,8 +45,8 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: data.name,
-        about: data.about,
+        name,
+        about,
       }),
     })
       .then((res) => {

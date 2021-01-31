@@ -15,7 +15,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
 
   function handleClick() {
     onCardClick({
-      card: card, 
+      card, 
       isSelected: true
     });
   }

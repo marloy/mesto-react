@@ -14,6 +14,7 @@ function PopupWithForm(props) {
           className="popup__form"
           method="POST"
           name={`${ props.name }-form`} 
+          onSubmit={props.onSubmit}
           noValidate
         >
           {props.children}

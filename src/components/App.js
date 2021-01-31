@@ -7,6 +7,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import EditProfilePopup from './EditProfilePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -44,6 +45,10 @@ function App() {
     setSelectedCard(data);
   }
 
+  function handleUpdateUser({name, about}) {
+    api.setUserInfo({name, about}).then(res => setCurrentUser(res));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -56,40 +61,11 @@ function App() {
             onCardClick={ handleCardClick }
           />
           <Footer />
-          <PopupWithForm
-            name="edit-profile"
-            title="Редактировать профиль"
-            buttonTitle="Сохранить"
-            isOpen={ isEditProfilePopupOpen }
-            onClose={ closeAllPopups }
-          >
-            <label className="popup__label">
-              <input
-                id="name-input"
-                className="popup__input popup__input_el_name"
-                type="text"
-                name="name"
-                placeholder="Имя"
-                minLength="2"
-                maxLength="40"
-                required
-              />
-              <span id="name-input-error" className="popup__input-error"></span>
-            </label>
-            <label className="popup__label">
-              <input
-                id="job-input"
-                className="popup__input popup__input_el_job"
-                type="text"
-                name="about"
-                placeholder="О себе"
-                minLength="2"
-                maxLength="200"
-                required
-              />
-              <span id="job-input-error" className="popup__input-error"></span>
-            </label>
-          </PopupWithForm>
+          <EditProfilePopup 
+            isOpen={isEditProfilePopupOpen} 
+            onClose={closeAllPopups} 
+            onUpdateUser={handleUpdateUser}
+          />
           <PopupWithForm
             name="add-card"
             title="Новое место"
