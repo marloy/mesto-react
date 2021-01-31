@@ -96,8 +96,8 @@ class Api {
       });
   }
 
-  deleteCard(data) {
-    return fetch(`${this._baseURL}/v1/${this._cohortID}/cards/${data._id}`, {
+  deleteCard(cardId) {
+    return fetch(`${this._baseURL}/v1/${this._cohortID}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,

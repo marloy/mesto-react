@@ -1,7 +1,8 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Card({card, onCardClick, onCardLike}) {
+
+function Card({card, onCardClick, onCardLike, onCardDelete}) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const isOwn = card.owner._id === currentUser._id;
@@ -22,6 +23,10 @@ function Card({card, onCardClick, onCardLike}) {
   function handleLikeClick() {
     onCardLike(card);
   }
+
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
   
   return (
     <>
@@ -35,6 +40,7 @@ function Card({card, onCardClick, onCardLike}) {
         type="button"
         className={cardDeleteButtonClassName}
         name="delete-button"
+        onClick={handleDeleteClick}
       />
       <div className="cards__description">
         <p className="cards__location">{card.name}</p>
