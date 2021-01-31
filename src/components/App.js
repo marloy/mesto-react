@@ -25,8 +25,7 @@ function App() {
 
   React.useEffect(() => {
     api.getAllNeededData()
-      .then(args => {
-        const [userInfo, initialCards] = args;
+      .then(([userInfo, initialCards]) => {
         setCurrentUser(userInfo);
         setCards(initialCards);
       })
