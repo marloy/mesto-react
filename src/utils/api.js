@@ -76,7 +76,7 @@ class Api {
       })
   }
 
-  saveCard(data) {
+  saveCard({name, link}) {
     return fetch(`${this._baseURL}/v1/${this._cohortID}/cards`, {
       method: "POST",
       headers: {
@@ -84,8 +84,8 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: data.name,
-        link: data.link,
+        name,
+        link
       }),
     })
       .then((res) => {
