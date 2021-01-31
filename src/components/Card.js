@@ -29,7 +29,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
   }
   
   return (
-    <>
+    <li className="cards__item">
       <img
         src={card.link}
         alt={card.name}
@@ -54,7 +54,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
           <span className="cards__like-counter">{card.likes.length}</span>
         </div>
       </div>
-    </>
+    </li>
   );
 }
 

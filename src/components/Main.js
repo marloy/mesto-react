@@ -40,14 +40,13 @@ function Main(props) {
       <section className="cards">
         <ul className="cards__grid">
           {props.cards.map((data) => (
-            <li key={data._id} className="cards__item">
               <Card
+                key={data._id}
                 card={data}
                 onCardClick={ props.onCardClick }
                 onCardLike={ props.onCardLike }
                 onCardDelete={ props.onCardDelete }
               />
-            </li>
           ))}
         </ul>
       </section>

@@ -8,13 +8,14 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser }) {
 
   const [name, setName] = React.useState(currentUser.name);
   const [description, setDescription] = React.useState(currentUser.about);
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
       name,
       about: description,
     });
+    onClose();
   }
 
   React.useEffect(() => {
