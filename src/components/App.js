@@ -59,8 +59,7 @@ function App() {
   function handleUpdateUser({name, about}) {
     api.setUserInfo({name, about})
       .then(res => setCurrentUser(res))
-      .catch(err => console.log(err))
-      .finally();
+      .catch(err => console.log(err));
   }
 
   function handleUpdateAvatar({avatar}) {

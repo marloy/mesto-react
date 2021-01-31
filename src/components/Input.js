@@ -1,7 +1,6 @@
-function Input({value, handleChange, ...rest}) {
+function Input({handleChange, ...rest}) {
   return (
     <input 
-      value={value}
       onChange={event => handleChange(event.target.value)}
       {...rest}
     />
