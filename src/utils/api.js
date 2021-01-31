@@ -57,7 +57,7 @@ class Api {
       });
   }
 
-  saveAvatar(data) {
+  setAvatar({avatar}) {
     return fetch(`${this._baseURL}/v1/${this._cohortID}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -65,7 +65,7 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar
       }),
     })
       .then((res) => {
