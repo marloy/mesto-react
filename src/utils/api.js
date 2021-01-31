@@ -112,29 +112,12 @@ class Api {
       });
   }
 
-  setLike(data) {
+  changeLikeCardStatus(cardId, isLiked) {
+    const httpMethod = isLiked ? 'PUT' : 'DELETE';
     return fetch(
-      `${this._baseURL}/v1/${this._cohortID}/cards/likes/${data._id}`,
+      `${this._baseURL}/v1/${this._cohortID}/cards/likes/${cardId}`,
       {
-        method: "PUT",
-        headers: {
-          authorization: this._token,
-        },
-      }
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status} ${res.statusText}`);
-      });
-  }
-
-  deleteLike(data) {
-    return fetch(
-      `${this._baseURL}/v1/${this._cohortID}/cards/likes/${data._id}`,
-      {
-        method: "DELETE",
+        method: httpMethod,
         headers: {
           authorization: this._token,
         },
