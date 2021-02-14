@@ -51,8 +51,8 @@ function App() {
     setSelectedCard({card: {}, isSelected: false});
   }
 
-  function handleCardClick(data) {
-    setSelectedCard(data);
+  function handleCardClick({ card, isSelected }) {
+    setSelectedCard({ card, isSelected });
   }
 
   function handleUpdateUser({name, about}) {
