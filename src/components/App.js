@@ -24,11 +24,11 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   React.useEffect(() => {
-    api.getAllNeededData()
-      .then(([userInfo, initialCards]) => {
-        setCurrentUser(userInfo);
-        setCards(initialCards);
-      })
+    api.getUserInfo()
+      .then((userInfo) => { setCurrentUser(userInfo) })
+      .catch((err) => console.log(err));
+    api.getInitialCards()
+      .then((initialCards) => { setCards(initialCards) })
       .catch((err) => console.log(err));
   }, []);
 
@@ -71,8 +71,7 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        const newCards = cards.map((c) => c._id === card._id ? newCard : c);
-        setCards(newCards);
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       })
       .catch(err => console.log(err));
   } 

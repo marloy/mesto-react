@@ -39,10 +39,10 @@ function Main(props) {
       </section>
       <section className="cards">
         <ul className="cards__grid">
-          {props.cards.map((data) => (
+          {props.cards.map((card) => (
               <Card
-                key={data._id}
-                card={data}
+                key={card._id}
+                card={card}
                 onCardClick={ props.onCardClick }
                 onCardLike={ props.onCardLike }
                 onCardDelete={ props.onCardDelete }
