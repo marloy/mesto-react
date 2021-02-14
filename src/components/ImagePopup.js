@@ -5,7 +5,7 @@ function ImagePopup({
   onClose
 }) {
   const isOpen = !!card;
-  
+
   React.useEffect(() => {
     if(!isOpen) return;
     
